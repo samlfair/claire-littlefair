@@ -1,6 +1,5 @@
 <script>
   import * as prismicH from "@prismicio/helpers"
-  import { linkResolver } from "$lib/prismicio"
   export let slice
 </script>
 
@@ -8,7 +7,7 @@
   <div class="grid bound">
     {#each slice.items as item}
     {@const imageSrc = prismicH.asImageWidthSrcSet(item.image)}
-      <a href={prismicH.asLink(item.link, linkResolver)} class="square">
+      <a href={prismicH.asLink(item.link)} class="square">
         <img
           src={imageSrc.src}
           srcset={imageSrc.srcset}

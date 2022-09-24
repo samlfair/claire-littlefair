@@ -1,6 +1,5 @@
 <script>
   import * as prismicH from "@prismicio/helpers"
-  import { linkResolver } from "$lib/prismicio"
 
   export let slice
 
@@ -19,7 +18,7 @@
         />
       </div>
       <div class="text">
-        {@html prismicH.asHTML(slice.primary.description, linkResolver)}
+        {@html prismicH.asHTML(slice.primary.description)}
       </div>
     </div>
   </article>
@@ -50,9 +49,8 @@
   
   .image {
     /* aspect-ratio: 1.8; */
-    background: grey;
     flex: 1.2vw;
-    align-self: flex-start;
+    align-self: stretch;
   }
 
   img {
@@ -60,6 +58,8 @@
     aspect-ratio: 1.2;
     object-fit: cover;
     display: block;
+    position: sticky;
+    top: 15vh;
   }
 
   h2 {

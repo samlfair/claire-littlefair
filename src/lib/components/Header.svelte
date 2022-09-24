@@ -1,32 +1,115 @@
 <script>
-    import logo from "./logo.png"
+  import * as prismicH from "@prismicio/helpers"
 
-    export let subtitle, site_title
+  export let menu, header_image
+
+  const srcset = prismicH.asImageWidthSrcSet(header_image)
 </script>
 
-<header class="bound">
-  <img src={logo} alt="{site_title} Logo">
-  <p>{subtitle}</p>
+<header>
+  <div class="image">
+    <img src={srcset.src} srcset={srcset.srcset} alt={header_image.alt}>
+  </div>
+  <input checked type="checkbox" id="menu">
+  <menu>
+    {#each menu as item}
+      <li>
+        <a href={prismicH.asLink(item.link)}>
+          {item.label}
+        </a>
+      </li>
+    {/each}
+  </menu>
+  <label for="menu" />
 </header>
 
 <style>
-  header {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    color: rgba(0,0,0,0.7);
-  }
+header {
+  min-height: 40vh;
+  position: relative;
+  margin-bottom: 10vh;
+}
 
+.image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border: 10px solid var(--lightblue);
+  box-sizing: border-box;
+}
 
-  header p {
-    font-size: clamp(1rem,3vw,1.3rem);
-    font-weight: lighter;
-    letter-spacing: 1px;
-  }
+img {
+  width: 30%;
+  padding: 5%;
+  display: block;
+  margin: auto;
+}
 
-  img {
-    max-width: clamp(200px, 30vw, 400px);
-    margin: 0 auto 3rem;
-    display: block;
-  }
+menu {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+  justify-content: space-around;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  flex-grow: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--lightblue);
+  transition: all 1s;
+}
+
+input {
+  display: none;
+}
+
+label {
+  position: absolute;
+  top: 2px;
+  right: 22px;
+}
+
+label:after {
+  content: "×";
+  display: block;
+  font-size: 3rem;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+}
+
+a {
+  line-height: 100%;
+  flex-grow: 1;
+  text-align: center;
+  transition: all 0.5s;
+  color: unset;
+  text-decoration: none;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+:checked ~ menu a {
+  transition-delay: 0.5s;
+  line-height: 0rem;
+}
+
+:checked ~ menu li {
+  flex-grow: 0;
+}
+
+:checked ~ label:after {
+  content: "☰";
+}
 </style>

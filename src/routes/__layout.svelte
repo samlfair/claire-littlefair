@@ -1,6 +1,5 @@
 <script context="module">
   import Header from "$lib/components/Header.svelte"
-  import Nav from "$lib/components/Nav.svelte"
   import Footer from "../lib/components/Footer.svelte";
   import { repositoryName } from "$lib/prismicio"
   import { createClient } from '$lib/prismicio'
@@ -24,7 +23,7 @@
 <script>
   export let config
 
-  const { site_title, subtitle, config_theme, menu, favicon = "𓍰" } = config.data
+  const { site_title, config_theme, header_image, menu, favicon = "𓍰" } = config.data
 </script>
 
 <svelte:head>
@@ -40,8 +39,7 @@
   />
 </svelte:head>
 
-<Header {site_title} {subtitle} />
-<Nav {menu} {config_theme} />
+<Header {menu} {config_theme} {header_image} />
 
 <main>
   <slot />
@@ -96,11 +94,25 @@
     
   :global(h2, h3) {
     font-family: "Americana";
+  }
+
+  :global(h2) {
     font-size: 2rem;
+  }
+
+  :global(h3) {
+    text-transform: uppercase;
+    font-size: 1.4rem;
   }
 
   :global(p, li) {
     font-family: "Sweet Sans Pro";
+    text-align: justify;
+  }
+
+  :global(p + p) {
+    margin-top: 0.6rem;
+    text-indent: 0;
   }
 
   :global(.bound) {

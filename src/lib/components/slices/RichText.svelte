@@ -1,11 +1,10 @@
 <script>
   import * as prismicH from "@prismicio/helpers"
-  import { linkResolver } from "$lib/prismicio"
   export let slice
 </script>
 
 <section class="bound richtext">
-  {@html prismicH.asHTML(slice.primary.text, linkResolver)}
+  {@html prismicH.asHTML(slice.primary.text)}
 </section>
 
 <style>

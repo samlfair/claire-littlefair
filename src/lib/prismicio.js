@@ -7,20 +7,28 @@ const defaultParams = {
   fetchLinks: 'theme.color',
 }
 
+const routes = [
+  {
+    type: 'page',
+    path: '/:uid',
+  },
+  {
+    type: 'page',
+    uid: 'homepage',
+    path: '/',
+  },
+]
+
 export const createClient = ({ request, fetch } = {}) => {
-  const client = prismic.createClient(repositoryName, { fetch, defaultParams })
+  const client = prismic.createClient(repositoryName, {
+    fetch,
+    defaultParams,
+    routes,
+  })
 
   if (request) {
     client.enableAutoPreviewsFromReq(request)
   }
 
   return client
-}
-
-export const linkResolver = (doc) => {
-  if (doc.type === 'page') {
-    if (doc.uid === 'homepage') return '/'
-    return '/' + doc.uid
-  }
-  return '/'
 }
