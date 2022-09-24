@@ -4,7 +4,7 @@
   export let slice
 
   const reverse = slice.primary.reverse
-  imageSrc = prismicH.asImageWidthSrcSet(slice.primary.image)  
+  const imageSrc = prismicH.asImageWidthSrcSet(slice.primary.image)  
 </script>
 
 <section class="bound">

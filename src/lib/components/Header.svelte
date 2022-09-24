@@ -20,7 +20,7 @@
       </li>
     {/each}
   </menu>
-  <label for="menu" />
+  <label tabindex=0 for="menu" />
 </header>
 
 <style>
@@ -76,6 +76,7 @@ input {
 
 label {
   position: absolute;
+  user-select: none;
   top: 2px;
   right: 22px;
 }
