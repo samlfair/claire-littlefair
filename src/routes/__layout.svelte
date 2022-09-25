@@ -60,7 +60,7 @@
     src: local('Sweet Sans Pro'), local('sweet sans pro'),
         url('/fonts/sweet-sans-pro-regular.ttf');
     font-style: regular;
-    font-weight: 400;
+    font-weight: normal;
   }
 
   @font-face {
@@ -74,9 +74,9 @@
   @font-face {
     font-family: "Sweet Sans Pro";
     src: local('Sweet Sans Pro'), local('sweet sans pro'),
-        url('/fonts/sweet-sans-pro-thin.ttf');
+        url('/fonts/sweet-sans-pro-light.otf');
     font-style: regular;
-    font-weight: lighter;
+    font-weight: normal;
   }
 
   :global(body) {
@@ -92,7 +92,7 @@
   }
 
     
-  :global(h2, h3) {
+  :global(h2) {
     font-family: "Americana";
   }
 
@@ -102,12 +102,16 @@
 
   :global(h3) {
     text-transform: uppercase;
-    font-size: 1.4rem;
+    font-family: "Sweet Sans Pro";
+    font-weight: bold;
+    font-size: 1.3rem;
   }
 
   :global(p, li) {
+    font-weight: 500;
     font-family: "Sweet Sans Pro";
     text-align: justify;
+    line-height: 1.4rem;
   }
 
   :global(p + p) {
@@ -117,7 +121,7 @@
 
   :global(.bound) {
     width: 100%;
-    max-width: min(calc(100vw - 5rem), 800px);
+    max-width: min(calc(100vw - 5rem), 900px);
     margin: auto;
   }
 </style>

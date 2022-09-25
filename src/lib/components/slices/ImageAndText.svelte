@@ -5,6 +5,22 @@
 
   const reverse = slice.primary.reverse
   const imageSrc = prismicH.asImageWidthSrcSet(slice.primary.image)  
+
+  const htmlSerializer = {
+    image: ({ node }) => {
+      console.log(node)
+      const linkUrl = node.linkTo ? prismicH.asLink(node.linkTo) : null
+      const linkTarget =
+        node.linkTo && node.linkTo.target
+          ? `target="${node.linkTo.target}" rel="noopener"`
+          : ''
+      const img = `<img height=${node.dimensions.height} width=${node.dimensions.width} src="${node.url}" alt="${
+        node.alt ? node.alt : ''
+      }" copyright="${node.copyright ? node.copyright : ''}" />`
+
+      return linkUrl ? `<a ${linkTarget} href="${linkUrl}">${img}</a>` : img
+    },
+  }
 </script>
 
 <section class="bound">
@@ -15,10 +31,12 @@
         src={imageSrc?.src}
         srcset={imageSrc?.srcset}
         alt={slice.primary?.image?.alt}
+        height={slice.primary.image.dimensions.height}
+        width={slice.primary.image.dimensions.width}
         />
       </div>
       <div class="text">
-        {@html prismicH.asHTML(slice.primary.description)}
+        {@html prismicH.asHTML(slice.primary.description, null, htmlSerializer)}
       </div>
     </div>
   </article>
@@ -46,6 +64,13 @@
   .text {
     flex: 2;
   }
+
+  .text :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem 0 3rem;
+  }
   
   .image {
     /* aspect-ratio: 1.8; */
@@ -55,11 +80,10 @@
 
   img {
     width: 100%;
-    aspect-ratio: 1.2;
-    object-fit: cover;
     display: block;
     position: sticky;
     top: 15vh;
+    height: auto;
   }
 
   h2 {

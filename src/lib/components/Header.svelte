@@ -8,7 +8,13 @@
 
 <header>
   <div class="image">
-    <img src={srcset.src} srcset={srcset.srcset} alt={header_image.alt}>
+    <img 
+      src={srcset.src} 
+      srcset={srcset.srcset} 
+      alt={header_image.alt}
+      width={header_image.dimensions.width}
+      height={header_image.dimensions.height}
+    />
   </div>
   <input checked type="checkbox" id="menu">
   <menu>
@@ -25,21 +31,22 @@
 
 <style>
 header {
-  min-height: 40vh;
+  --speed: 0.4s;
+  --speed-half: calc(var(--speed) / 2);
   position: relative;
-  margin-bottom: 10vh;
 }
 
 .image {
   width: 100%;
   height: 100%;
   display: flex;
-  border: 10px solid var(--lightblue);
+  background: var(--lightblue);
   box-sizing: border-box;
 }
 
 img {
   width: 30%;
+  height: auto;
   padding: 5%;
   display: block;
   margin: auto;
@@ -67,7 +74,7 @@ li {
   justify-content: center;
   align-items: center;
   background: var(--lightblue);
-  transition: all 1s;
+  transition: all var(--speed);
 }
 
 input {
@@ -94,7 +101,7 @@ a {
   line-height: 100%;
   flex-grow: 1;
   text-align: center;
-  transition: all 0.5s;
+  transition: all var(--speed-half);
   color: unset;
   text-decoration: none;
   overflow: hidden;
@@ -102,7 +109,7 @@ a {
 }
 
 :checked ~ menu a {
-  transition-delay: 0.5s;
+  transition-delay: var(--speed-half);
   line-height: 0rem;
 }
 
