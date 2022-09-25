@@ -1,32 +1,39 @@
 <script>
   import * as prismicH from "@prismicio/helpers"
+  import {beforeNavigate} from "$app/navigation"
 
   export let menu, header_image
 
   const srcset = prismicH.asImageWidthSrcSet(header_image)
+
+  let hamburger = true
 </script>
 
 <header>
   <div class="image">
-    <img 
-      src={srcset.src} 
-      srcset={srcset.srcset} 
-      alt={header_image.alt}
-      width={header_image.dimensions.width}
-      height={header_image.dimensions.height}
-    />
+    <a class="home" href="/">
+      <img 
+        src={srcset.src} 
+        srcset={srcset.srcset} 
+        alt={header_image.alt}
+        width={header_image.dimensions.width}
+        height={header_image.dimensions.height}
+      />
+    </a>
   </div>
-  <input checked type="checkbox" id="menu">
+  <input bind:checked={hamburger} type="checkbox" id="menu">
   <menu>
     {#each menu as item}
       <li>
-        <a href={prismicH.asLink(item.link)}>
-          {item.label}
-        </a>
+        <a on:click={() => hamburger = !hamburger} 
+          href={prismicH.asLink(item.link)}
+        >
+            {item.label}
+          </a>
       </li>
     {/each}
   </menu>
-  <label tabindex=0 for="menu" />
+  <label class="hamburger" tabindex=0 for="menu" />
 </header>
 
 <style>
@@ -39,17 +46,23 @@ header {
 .image {
   width: 100%;
   height: 100%;
+  min-height: 30vh;
   display: flex;
   background: var(--lightblue);
   box-sizing: border-box;
 }
 
-img {
+.image a {
+  z-index: 1;
   width: 30%;
-  height: auto;
-  padding: 5%;
-  display: block;
   margin: auto;
+  padding: 5%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 menu {
@@ -68,6 +81,7 @@ menu {
 }
 
 li {
+  z-index: 2;
   list-style: none;
   flex-grow: 0.5;
   display: flex;
@@ -81,14 +95,15 @@ input {
   display: none;
 }
 
-label {
+label.hamburger {
+  z-index: 3;
   position: absolute;
   user-select: none;
   top: 2px;
   right: 22px;
 }
 
-label:after {
+label.hamburger:after {
   content: "×";
   display: block;
   font-size: 3rem;
@@ -97,7 +112,7 @@ label:after {
   text-align: center;
 }
 
-a {
+menu a {
   line-height: 100%;
   flex-grow: 1;
   text-align: center;
@@ -117,7 +132,7 @@ a {
   flex-grow: 0;
 }
 
-:checked ~ label:after {
+:checked ~ label.hamburger:after {
   content: "☰";
 }
 </style>
