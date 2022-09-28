@@ -44,7 +44,8 @@
 <main>
   <slot />
 </main>
-<Footer />
+
+<Footer {menu} {config_theme} />
 
 <style>
   @font-face {
@@ -98,6 +99,7 @@
 
   :global(h2) {
     font-size: 2rem;
+    letter-spacing: 1px;
   }
 
   :global(h3) {
@@ -105,6 +107,14 @@
     font-family: "Sweet Sans Pro";
     font-weight: bold;
     font-size: 1.3rem;
+  }
+
+  :global(h2 + h3) {
+    font-family: "Americana";
+    letter-spacing: 1px;
+    color: #666;
+    margin-top: -1.3rem;
+    line-height: 1.3;
   }
 
   :global(p, li) {

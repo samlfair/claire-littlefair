@@ -46,7 +46,7 @@ header {
 .image {
   width: 100%;
   height: 100%;
-  min-height: 30vh;
+  min-height: 17rem;
   display: flex;
   background: var(--lightblue);
   box-sizing: border-box;
@@ -77,7 +77,8 @@ menu {
   justify-content: space-around;
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 li {

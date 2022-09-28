@@ -29,15 +29,22 @@
 <style>
   article {
     margin: min(10vw, 4rem) 0;
+    perspective: 300px;
   }
 
   .padding {
     align-items: center;
     gap: 4vw;
     margin: -1rem;
-    padding: 1rem;
+    padding: 1.5rem;
     display: flex;
-    transition: box-shadow 0.6s, transform 0.6s;
+    flex-wrap: wrap;
+    transition: box-shadow 0.4s, transform 0.4s;
+    border-radius: 6px;
+    box-shadow: 
+      0px 2px 15px 4px rgba(0,0,0,0.08), 
+      0px 1px 2px 1px rgba(0,0,0,0.1);
+    
   }
   
   .padding.reverse {
@@ -46,9 +53,9 @@
 
   .padding:hover {
     box-shadow: 
-      0px 4px 20px 14px rgba(0,0,0,0.08), 
+      0px 4px 15px 6px rgba(0,0,0,0.08), 
       0px 2px 5px 1px rgba(0,0,0,0.1);
-    transform: translateY(-1px);
+    transform: translateY(-1px) translateZ(1px);
   }
 
   a {
@@ -58,18 +65,23 @@
 
   .text {
     flex: 2;
+    min-width: 350px;
   }
   
   .image {
-    /* aspect-ratio: 1.8; */
+    border-radius: 2px;
+    overflow: hidden;
     background: grey;
     flex: 1.2vw;
-    align-self: flex-start;
+    align-self: stretch;
+    min-width: 180px;
+    max-height: 280px;
   }
 
   img {
     width: 100%;
-    aspect-ratio: 1.2;
+    /* aspect-ratio: 1.2; */
+    height: 100%;
     object-fit: cover;
     display: block;
   }
