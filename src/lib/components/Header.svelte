@@ -23,25 +23,17 @@
   </div>
   <input bind:checked={hamburger} type="checkbox" id="menu">
   <menu>
-    {#each menu as item, index}
+    {#each menu as item}
       <li>
         <a on:click={() => hamburger = !hamburger} 
           href={prismicH.asLink(item.link)}
-          tabindex={hamburger ? -1 : index + 2}
         >
             {item.label}
           </a>
       </li>
     {/each}
   </menu>
-  <label on:keydown={(e) => {
-    if(e.code === "Space" || e.code === "Enter") {
-      console.log(e)
-      e.preventDefault()
-      hamburger = !hamburger
-      console.log(hamburger)
-    }
-  }} class="hamburger" tabindex=1 for="menu" />
+  <label class="hamburger" tabindex=0 for="menu" />
 </header>
 
 <style>
