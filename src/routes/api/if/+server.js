@@ -1,11 +1,11 @@
 import { error } from '@sveltejs/kit'
 import { Client, Environment } from 'square'
-import { env } from '$env/dynamic/private'
+// import { env } from '$env/dynamic/private'
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({}) {
   const client = new Client({
-    accessToken: env.SQUARE_ACCESS_TOKEN,
+    // accessToken: env.SQUARE_ACCESS_TOKEN,
     types: 'ITEM',
   })
 
