@@ -1,13 +1,17 @@
 export { matchers } from './client-matchers.js';
 
-export const components = [
-	() => import("../../src/routes/__layout.svelte"),
-	() => import("../runtime/components/error.svelte"),
-	() => import("../../src/routes/[uid].svelte"),
-	() => import("../../src/routes/index.svelte")
-];
+			export const nodes = [() => import('./nodes/0'),
+	() => import('./nodes/1'),
+	() => import('./nodes/2'),
+	() => import('./nodes/3')];
 
-export const dictionary = {
-	"": [[0, 3], [1], 1],
-	"[uid]": [[0, 2], [1], 1]
+			export const server_loads = [];
+
+			export const dictionary = {
+	"/": [~2],
+	"/[uid]": [~3]
 };
+
+			export const hooks = {
+				handleError: (({ error }) => { console.error(error) }),
+			};

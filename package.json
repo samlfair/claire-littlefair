@@ -1,22 +1,26 @@
 {
-	"name": "claire",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
-		"package": "svelte-kit package",
-		"preview": "svelte-kit preview",
-		"prepare": "svelte-kit sync"
-	},
-	"devDependencies": {
-		"@prismicio/client": "^6.5.0",
-		"@prismicio/helpers": "^2.3.0",
-		"@prismicio/svelte": "^0.0.4",
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
-		"colord": "^2.9.2",
-		"escape-html": "^1.0.3",
-		"svelte": "^3.44.0"
-	},
-	"type": "module"
+  "name": "claire",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "svelte-kit build",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview",
+    "prepare": "svelte-kit sync"
+  },
+  "devDependencies": {
+    "@prismicio/client": "^6.5.0",
+    "@prismicio/helpers": "^2.3.0",
+    "@prismicio/svelte": "^0.0.4",
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "^1.0.0-next.535",
+    "colord": "^2.9.2",
+    "escape-html": "^1.0.3",
+    "svelte": "^3.44.0",
+    "vite": "^3.2.2"
+  },
+  "type": "module",
+  "dependencies": {
+    "square": "^23.0.0"
+  }
 }
