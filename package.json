@@ -5,8 +5,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
-    "prepare": "svelte-kit sync"
+    "preview": "svelte-kit preview"
   },
   "devDependencies": {
     "@prismicio/client": "^6.5.0",
