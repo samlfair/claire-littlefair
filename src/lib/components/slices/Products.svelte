@@ -1,71 +1,74 @@
 <script>
-	export let slice;
+  export let slice
 
-	const { items } = slice;
+  const { items } = slice
 </script>
 
 <section class="bound">
-	{#each items as item}
-		<article>
-			<a href={item.link_to_square_page.url} target="_blank" rel="noreferrer">
-				<img src={item.square_products?.image_url} alt={item.square_products?.description} />
-				<h2>{item.square_products?.title}</h2>
-				<p class="details">
-					<span class="price">
-						£{(item.square_products?.price / 100).toFixed(2)}
-						{item.square_products?.currency}
-					</span>
-					<span class="sold-out">
-						{item.square_products?.soldOut ? 'Sold out' : ''}
-					</span>
-				</p>
-			</a>
-		</article>
-	{/each}
+  {#each items as item}
+    <article>
+      <a href={item.link_to_square_page.url} target="_blank" rel="noreferrer">
+        <img
+          src={item.square_products?.image_url}
+          alt={item.square_products?.description}
+        />
+        <h2>{item.square_products?.title}</h2>
+        <p class="details">
+          <span class="price">
+            £{(item.square_products?.price / 100).toFixed(2)}
+            {item.square_products?.currency}
+          </span>
+          <span class="sold-out">
+            {item.square_products?.soldOut ? 'Sold out' : ''}
+          </span>
+        </p>
+      </a>
+    </article>
+  {/each}
 </section>
 
 <style>
-	section {
-		display: grid;
-		grid-template-columns: auto auto auto;
-		gap: 1rem;
-		margin-top: 3rem;
-		margin-bottom: 3rem;
-	}
+  section {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
 
-	article {
-		flex: 1;
-		min-width: 30%;
-	}
+  article {
+    flex: 1;
+    min-width: 30%;
+  }
 
-	a {
-		text-decoration: none;
-		color: initial;
-	}
+  a {
+    text-decoration: none;
+    color: initial;
+  }
 
-	img {
-		width: 100%;
-		aspect-ratio: 1;
-		fill: cover;
-	}
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
 
-	h2 {
-		font-size: 1rem;
-		margin-bottom: 0.5rem;
-	}
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 
-	p {
-		font-size: 0.8rem;
-	}
+  p {
+    font-size: 0.8rem;
+  }
 
-	p .sold-out {
-		display: inline-block;
-		transform: translateY(-1px);
-		color: rgb(187, 0, 0);
-		text-transform: uppercase;
-		margin: 0 -8px 0 10px;
-		padding: 3px 8px 0px;
-		background: #eee;
-		font-size: 0.6rem;
-	}
+  p .sold-out {
+    display: inline-block;
+    transform: translateY(-1px);
+    color: rgb(187, 0, 0);
+    text-transform: uppercase;
+    margin: 0 -8px 0 10px;
+    padding: 3px 8px 0px;
+    background: #eee;
+    font-size: 0.6rem;
+  }
 </style>
