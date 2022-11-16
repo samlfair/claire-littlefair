@@ -8,15 +8,15 @@
 	{#each items as item}
 		<article>
 			<a href={item.link_to_square_page.url} target="_blank" rel="noreferrer">
-				<img src={item.product.image_url} alt={item.product.description} />
-				<h2>{item.product.title}</h2>
+				<img src={item.square_products?.image_url} alt={item.square_products?.description} />
+				<h2>{item.square_products?.title}</h2>
 				<p class="details">
 					<span class="price">
-						£{(item.product.price / 100).toFixed(2)}
-						{item.product.currency}
+						£{(item.square_products?.price / 100).toFixed(2)}
+						{item.square_products?.currency}
 					</span>
 					<span class="sold-out">
-						{item.product.soldOut ? 'Sold out' : ''}
+						{item.square_products?.soldOut ? 'Sold out' : ''}
 					</span>
 				</p>
 			</a>

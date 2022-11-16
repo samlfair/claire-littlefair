@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"json-bigint": "^1.0.0",
 		"square": "^23.0.0"
 	}
 }
