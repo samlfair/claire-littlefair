@@ -2,7 +2,6 @@ import { createClient } from '$lib/prismicio'
 import { error } from '@sveltejs/kit'
 
 export async function load({ request, params }) {
-  console.log(params)
   const client = createClient({ request })
 
   try {
