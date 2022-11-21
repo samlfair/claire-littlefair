@@ -135,6 +135,10 @@
     text-indent: 0;
   }
 
+  :global(button) {
+    font-family: 'Sweet Sans Pro';
+  }
+
   :global(.bound) {
     width: 100%;
     max-width: min(calc(100vw - 5rem), 900px);
