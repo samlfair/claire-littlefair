@@ -1,32 +1,27 @@
 <script>
-  import * as prismicH from "@prismicio/helpers"
-  import { htmlSerializer } from "$lib/prismicio"
+  import * as prismicH from '@prismicio/helpers'
+  import { htmlSerializer } from '$lib/prismicio'
 
   export let slice
 
-  const reverse = slice.primary.reverse
-  const imageSrc = prismicH.asImageWidthSrcSet(slice.primary.image)  
+  const { reverse, description, image } = slice.primary
+  const { alt, dimensions } = image
+  const { width, height } = dimensions
+  const { src, srcset } = prismicH.asImageWidthSrcSet(image)
 </script>
 
 <section class="bound">
   <article>
     <div class="padding" class:reverse>
       <div class="image">
-        <img 
-        src={imageSrc?.src}
-        srcset={imageSrc?.srcset}
-        alt={slice.primary?.image?.alt}
-        height={slice.primary.image.dimensions.height}
-        width={slice.primary.image.dimensions.width}
-        />
+        <img {src} {srcset} {alt} {height} {width} />
       </div>
       <div class="text">
-        {@html prismicH.asHTML(slice.primary.description, null, htmlSerializer)}
+        {@html prismicH.asHTML(description, null, htmlSerializer)}
       </div>
     </div>
   </article>
 </section>
-
 
 <style>
   article {
@@ -41,7 +36,7 @@
     display: flex;
     transition: box-shadow 0.6s, transform 0.6s;
   }
-  
+
   .padding.reverse {
     flex-direction: row-reverse;
   }
@@ -56,7 +51,7 @@
     display: block;
     margin: 2rem 0 3rem;
   }
-  
+
   .image {
     /* aspect-ratio: 1.8; */
     flex: 1.2vw;
@@ -72,7 +67,7 @@
   }
 
   h2 {
-    margin-bottom:  0.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1.4rem;
   }
 </style>

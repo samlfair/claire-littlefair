@@ -8,5 +8,14 @@
 </script>
 
 {#key data.document.id}
-  <SliceZone slices={data.document.data.body} {components} {dev} />
+  <div class="perspective">
+    <SliceZone slices={data.document.data.body} {components} {dev} />
+  </div>
 {/key}
+
+<style>
+  .perspective {
+    perspective: 10px;
+    transform-style: preserve-3d;
+  }
+</style>
