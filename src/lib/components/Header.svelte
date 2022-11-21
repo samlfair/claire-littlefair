@@ -4,7 +4,11 @@
 
   export let menu, header_image
 
-  const srcset = prismicH.asImageWidthSrcSet(header_image)
+  const {
+    alt,
+    dimensions: { width, height },
+  } = header_image
+  const { srcset, src } = prismicH.asImageWidthSrcSet(header_image)
 
   let hamburger = true
 </script>
@@ -12,23 +16,17 @@
 <header>
   <div class="image">
     <a class="home" href="/">
-      <img
-        src={srcset.src}
-        srcset={srcset.srcset}
-        alt={header_image.alt}
-        width={header_image.dimensions.width}
-        height={header_image.dimensions.height}
-      />
+      <img {src} {srcset} {alt} {width} {height} />
     </a>
   </div>
   <input bind:checked={hamburger} type="checkbox" id="menu" />
   <menu>
     {#each menu as item}
       <li>
-        <!-- <a on:click={() => hamburger = !hamburger} 
+        <a
+          on:click={() => (hamburger = !hamburger)}
           href={prismicH.asLink(item.link)}
-        > -->
-        <a href={prismicH.asLink(item.link)}>
+        >
           {item.label}
         </a>
       </li>
@@ -126,11 +124,13 @@
   }
 
   :checked ~ menu a {
-    transition-delay: var(--speed-half);
+    /* transition-delay: var(--speed-half); */
+    transition-duration: 0s;
     line-height: 0rem;
   }
 
   :checked ~ menu li {
+    transition-duration: 0s;
     flex-grow: 0;
   }
 
