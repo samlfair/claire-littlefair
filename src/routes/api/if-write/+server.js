@@ -35,6 +35,8 @@ export async function GET({ fetch }) {
     result: { relatedObjects },
   } = squareResponse
 
+  console.log(JSONbig.stringify(squareResponse, null, 2))
+
   const imageURLs = new Object()
 
   relatedObjects.forEach((object) => {
