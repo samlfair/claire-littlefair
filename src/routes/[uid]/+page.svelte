@@ -4,7 +4,6 @@
   import components from '$lib/components/slices'
 
   export let data
-  // $: data
 </script>
 
 {#key data.document.id}
