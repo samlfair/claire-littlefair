@@ -1,4 +1,5 @@
 <script>
+  import * as prismicH from '@prismicio/helpers'
   import { SoldOut } from '$lib/components'
 
   export let slice
@@ -7,27 +8,22 @@
 </script>
 
 <section class="bound">
-  {#each items as item}
-    {@const {
-      link_to_square_page: { url },
-      square_products: {
-        image_url,
-        description,
-        title,
-        price,
-        currency,
-        soldOut,
-      },
-    } = item}
-    <a href={url} target="_blank" rel="noreferrer">
+  {#each items as { product }}
+    {@const { images, square_item } = product.data}
+    {@const { price, currency, description, soldOut } = square_item}
+    {@const { src, srcset } = prismicH.asImageWidthSrcSet(images[0].image)}
+    {@const formattedPrice = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency,
+    }).format(price / 100)}
+    <a href={prismicH.asLink(product)}>
       <div
         class="img"
         role="img"
-        aria-label={description}
-        style:background-image={`url("${image_url}"), radial-gradient(circle, white 0%, #eee 100%)`}
+        aria-label={square_item.description}
+        style:background-image={`url("${src}"), radial-gradient(circle, white 0%, #eee 100%)`}
       />
-      <!-- <img src={image_url} alt={description} /> -->
-      <h2>{title}</h2>
+      <h2>{square_item.title}</h2>
       <p class="details">
         <span class="price">
           £{(price / 100).toFixed(2)}

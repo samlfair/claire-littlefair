@@ -4,7 +4,7 @@ import * as prismic from '@prismicio/client'
 export const repositoryName = 'clairelittlefair'
 
 const defaultParams = {
-  fetchLinks: 'theme.color',
+  fetchLinks: ['theme.color', 'product.images', 'product.square_item'],
 }
 
 const routes = [
@@ -16,6 +16,10 @@ const routes = [
     type: 'page',
     uid: 'homepage',
     path: '/',
+  },
+  {
+    type: 'product',
+    path: '/products/:uid',
   },
 ]
 
