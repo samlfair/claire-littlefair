@@ -7,13 +7,12 @@ export async function load({ request, params }) {
 
   try {
     const document = await client.getByUID('page', params.uid || 'homepage')
+    if (document) {
+      return { document }
+    }
   } catch (e) {
     console.error(e)
     throw error(404, 'Not found')
-  }
-
-  if (document) {
-    return { document }
   }
 
   throw error(404, 'Not found')
