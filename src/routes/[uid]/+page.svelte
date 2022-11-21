@@ -4,9 +4,9 @@
   import components from '$lib/components/slices'
 
   export let data
-  const { document } = data
+  // $: data
 </script>
 
-{#key document.uid}
-  <SliceZone slices={document?.data?.body} {components} {dev} />
+{#key data.document.id}
+  <SliceZone slices={data.document.data.body} {components} {dev} />
 {/key}
