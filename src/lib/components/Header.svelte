@@ -24,6 +24,7 @@
     {#each menu as item}
       <li>
         <a
+          prefetch
           on:click={() => (hamburger = !hamburger)}
           href={prismicH.asLink(item.link)}
         >
