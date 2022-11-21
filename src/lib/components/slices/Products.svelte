@@ -6,21 +6,29 @@
 
 <section class="bound">
   {#each items as item}
+    {@const {
+      link_to_square_page: { url },
+      square_products: {
+        image_url,
+        description,
+        title,
+        price,
+        currency,
+        soldOut,
+      },
+    } = item}
     <article>
-      <a href={item.link_to_square_page.url} target="_blank" rel="noreferrer">
-        <img
-          src={item.square_products?.image_url}
-          alt={item.square_products?.description}
-        />
-        <h2>{item.square_products?.title}</h2>
+      <a href={url} target="_blank" rel="noreferrer">
+        <img src={image_url} alt={description} />
+        <h2>{title}</h2>
         <p class="details">
           <span class="price">
-            £{(item.square_products?.price / 100).toFixed(2)}
-            {item.square_products?.currency}
+            £{(price / 100).toFixed(2)}
+            {currency}
           </span>
-          <span class="sold-out">
-            {item.square_products?.soldOut ? 'Sold out' : ''}
-          </span>
+          {#if soldOut}
+            <span class="sold-out"> Sold out </span>
+          {/if}
         </p>
       </a>
     </article>
