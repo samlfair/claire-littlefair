@@ -17,36 +17,35 @@
         soldOut,
       },
     } = item}
-    <article>
-      <a href={url} target="_blank" rel="noreferrer">
-        <img src={image_url} alt={description} />
-        <h2>{title}</h2>
-        <p class="details">
-          <span class="price">
-            £{(price / 100).toFixed(2)}
-            {currency}
-          </span>
-          {#if soldOut}
-            <span class="sold-out"> Sold out </span>
-          {/if}
-        </p>
-      </a>
-    </article>
+    <a href={url} target="_blank" rel="noreferrer">
+      <div
+        class="img"
+        role="img"
+        aria-label={description}
+        style:background-image={`url("${image_url}"), radial-gradient(circle, white 0%, #eee 100%)`}
+      />
+      <!-- <img src={image_url} alt={description} /> -->
+      <h2>{title}</h2>
+      <p class="details">
+        <span class="price">
+          £{(price / 100).toFixed(2)}
+          {currency}
+        </span>
+        {#if soldOut}
+          <span class="sold-out"> Sold out </span>
+        {/if}
+      </p>
+    </a>
   {/each}
 </section>
 
 <style>
   section {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat( auto-fit, minmax(230px, 1fr) );
     gap: 1rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
-  }
-
-  article {
-    flex: 1;
-    min-width: 30%;
   }
 
   a {
@@ -54,10 +53,12 @@
     color: initial;
   }
 
-  img {
+  .img {
     width: 100%;
     aspect-ratio: 1;
-    object-fit: cover;
+    background-size: cover;
+    background-blend-mode: darken;
+    margin-bottom: 1rem;
   }
 
   h2 {
