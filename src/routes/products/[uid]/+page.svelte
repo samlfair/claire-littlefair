@@ -71,6 +71,30 @@
     display: block;
   }
 
+  @media only screen and (max-width: 600px) {
+    main {
+      flex-direction: column;
+    }
+
+    section.images {
+      flex-direction: row;
+      min-height: 250px;
+      width: 100%;
+    }
+
+    .image-container {
+      flex-direction: row;
+      gap: 1rem;
+      height: 100%;
+    }
+
+    img {
+      width: auto;
+      height: 100%;
+      display: block;
+    }
+  }
+
   section.details {
     align-self: flex-start;
   }
