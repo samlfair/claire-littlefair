@@ -6,6 +6,9 @@ import JSONbig from 'json-bigint'
 const prismicEndpoint =
   'https://if-api.prismic.io/if/write/clairelittlefair--square'
 
+const logoURL =
+  'https://images.prismic.io/clairelittlefair/37d63355-8d65-408e-b001-8824280ef046_02cfe0ec-0922-4c00-8887-a779e56d34ce_logo.png?auto=compress%2Cformat&width=2048'
+
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ fetch }) {
   const client = new Client({
@@ -35,8 +38,6 @@ export async function GET({ fetch }) {
     result: { relatedObjects },
   } = squareResponse
 
-  console.log(JSONbig.stringify(squareResponse, null, 2))
-
   const imageURLs = new Object()
 
   relatedObjects.forEach((object) => {
@@ -56,7 +57,7 @@ export async function GET({ fetch }) {
       itemData: {
         name: title,
         description,
-        imageIds: [image_id],
+        imageIds,
         variations: [
           {
             itemVariationData: {
@@ -69,7 +70,7 @@ export async function GET({ fetch }) {
     } = item
 
     const last_update = new Date(updatedAt).getTime()
-    const image_url = imageURLs[image_id]
+    const image_url = imageIds ? imageURLs[imageIds[0]] : logoURL
     const price = Number(amount)
 
     return {
@@ -97,5 +98,5 @@ export async function GET({ fetch }) {
     },
   })
 
-  return new Response(JSON.stringify(response))
+  return new Response(JSONbig.stringify(response))
 }
