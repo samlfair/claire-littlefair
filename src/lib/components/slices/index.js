@@ -6,6 +6,7 @@ import ImageAndText from './ImageAndText.svelte'
 import FeaturedImage from './FeaturedImage.svelte'
 import ImageTiles from './ImageTiles.svelte'
 import Products from './Products.svelte'
+import Hero from './Hero.svelte'
 
 const components = {
   photo_grid: PhotoGrid,
@@ -16,6 +17,7 @@ const components = {
   featured_image: FeaturedImage,
   image_tiles: ImageTiles,
   products: Products,
+  hero: Hero,
 }
 
 export default components

@@ -54,6 +54,14 @@
   }
 
   @font-face {
+    font-family: 'Americana';
+    src: local('Americana Italic'), local('americana-italic'),
+      url('/fonts/americana-italic.otf');
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  @font-face {
     font-family: 'Sweet Sans Pro';
     src: local('Sweet Sans Pro'), local('sweet sans pro'),
       url('/fonts/sweet-sans-pro-regular.ttf');
