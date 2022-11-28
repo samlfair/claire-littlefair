@@ -1,29 +1,40 @@
 <script>
-  import * as prismicH from "@prismicio/helpers"
-  export let menu, config_theme
+  import * as prismicH from '@prismicio/helpers'
+  export let menu, config_theme, header_image
 
+  const {
+    alt,
+    dimensions: { width, height },
+  } = header_image
+  const { srcset, src } = prismicH.asImageWidthSrcSet(header_image)
 </script>
 
 <footer style:background={config_theme.data.color}>
-    <menu>
-      {#each menu as item}
-        <a href={prismicH.asLink(item.link)}>{item.label}</a>
-      {/each}
-    </menu>
-    <span class="copyright">
-      © Claire Littlefair Jewellery {new Date().getFullYear()}
-    </span>
+      <img {src} {srcset} {alt} {width} {height} />
+  <menu>
+    {#each menu as item}
+      <a href={prismicH.asLink(item.link)}>{item.label}</a>
+    {/each}
+  </menu>
+  <span class="copyright">
+    © Claire Littlefair Jewellery {new Date().getFullYear()}
+  </span>
 </footer>
 
 <style>
   footer {
-    min-height: 10rem;
     display: flex;
+    gap: 3rem;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    font-family: "Sweet Sans Pro";
-    padding: 2.5rem 15vw 5rem;
+    font-family: 'Sweet Sans Pro';
+    padding: 4rem 15vw;
+  }
+
+  img {
+    width: 40%;
+    object-fit: cover;
+    height: auto;
   }
 
   menu {
@@ -31,7 +42,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.2rem;
-    padding: 0 0 3rem;
+    padding: 0;
   }
 
   a {

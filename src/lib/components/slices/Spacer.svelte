@@ -1,5 +1,5 @@
 <script>
-  export let space = "6rem"
+  export let slice
 </script>
 
-<div style="margin-top: {space}" />
+<div style={`margin-top: ${slice.primary.number ?? '6'}rem`} />

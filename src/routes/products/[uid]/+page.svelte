@@ -20,7 +20,9 @@
         {@const { alt, url, dimensions } = image}
         {@const { width, height } = dimensions}
         {@const { src, srcset } = prismicH.asImageWidthSrcSet(image)}
-        <img {src} {alt} {width} {height} />
+        <div class="image" {width} {height}>
+          <img {src} {alt} />
+        </div>
       {/each}
     </div>
   </section>
@@ -65,10 +67,17 @@
     gap: 2rem;
   }
 
+  .image {
+    width: 100%;
+    height: auto;
+    background: radial-gradient(circle, white 0%, #eee 100%);
+  }
+
   img {
     width: 100%;
     height: auto;
     display: block;
+    mix-blend-mode: darken;
   }
 
   @media only screen and (max-width: 600px) {

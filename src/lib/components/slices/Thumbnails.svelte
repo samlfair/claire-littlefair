@@ -29,7 +29,6 @@
 <style>
   article {
     margin: min(10vw, 4rem) 0;
-    perspective: 300px;
   }
 
   .padding {
@@ -55,7 +54,7 @@
     box-shadow: 
       0px 4px 15px 6px rgba(0,0,0,0.08), 
       0px 2px 5px 1px rgba(0,0,0,0.1);
-    transform: translateY(-1px) translateZ(1px);
+    transform: translateY(-1px);
   }
 
   a {

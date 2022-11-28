@@ -23,27 +23,23 @@
     src="https://static.cdn.prismic.io/prismic.js?new=true&repo={repositoryName}"
   ></script>
   <title>{site_title}</title>
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2284%22>{favicon}</text></svg>"
-  />
-  <link
+  <link rel="icon" type="image/svg+xml" href="./favicon.png" />
+  <!-- <link
     rel="preload"
     href="/fonts/americana.ttf"
     as="font"
     type="font/woff2"
     crossOrigin="anonymous"
-  />
+  /> -->
 </svelte:head>
 
-<Header {menu} {config_theme} {header_image} />
+<Header {menu} {config_theme} {site_title} {header_image} />
 
 <main>
   <slot />
 </main>
 
-<Footer {menu} {config_theme} />
+<Footer {menu} {config_theme} {header_image} />
 
 <style>
   @font-face {
