@@ -39,63 +39,63 @@
 <svelte:window bind:scrollY bind:innerHeight />
 
 <section class="hero">
-  <div class="image" bind:this={el}>
-    <img
-      style:--scroll-coefficient={getElementScrollCoefficient(
-        scrollY,
-        innerHeight,
-        el,
-      )}
-      {src}
-      {srcset}
-      {alt}
-      {width}
-      {height}
-    />
-  </div>
+  <img
+    style:--scroll-coefficient={getElementScrollCoefficient(
+      scrollY,
+      innerHeight,
+      el,
+    )}
+    bind:this={el}
+    {src}
+    {srcset}
+    {alt}
+    {width}
+    {height}
+  />
+
   <div class="bound">
-    <div class="text">
-      <p>{slice.primary.text}</p>
-    </div>
+      <p>{text}</p>
   </div>
 </section>
 
 <style>
   section {
-    position: relative;
+    /* position: relative; */
+    display: grid;
+    grid-template: "container";
+    place-items: center;
+    place-content: center;
+    overflow: hidden;
+    max-height: 100vh;
   }
 
-  .image {
-    width: 100vw;
-    overflow: hidden;
+  section > * {
+    grid-area: container;
   }
+
   img {
-    min-width: 100%;
+    height: auto;
+    width: auto;
     object-fit: cover;
-    min-height: 40vh;
+    min-height: 100%;
     display: block;
     filter: hue-rotate(calc(var(--scroll-coefficient) * 180deg));
+    z-index: -1;
   }
-
-  .text {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    position: absolute;
-    display: flex;
-    align-items: center;
-  }
-
+  
   p {
-    margin: 1rem;
-    width: 520px;
+    z-index: 1;
+    margin: 0;
+    max-width: 520px;
     text-align: left;
     hyphens: none;
     color: white;
     font-family: Americana;
     font-style: italic;
-    font-size: 2.5rem;
-    line-height: 4rem;
+    font-size: 2.4rem;
+    font-size: clamp(2.4rem, 6vw, 2.6rem);
+    line-height: clamp(3.5rem, 8vw, 4rem);
     text-shadow: 1px 1px 10px rgba(130, 130, 130, 0.4);
+    padding: 3.5rem 1rem 2.5rem;
   }
 </style>
