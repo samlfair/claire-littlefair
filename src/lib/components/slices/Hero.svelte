@@ -38,30 +38,6 @@
 
 <svelte:window bind:scrollY bind:innerHeight />
 
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-<hr />
-
 <section class="hero">
   <div class="image" bind:this={el}>
     <img
