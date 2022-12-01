@@ -25,13 +25,6 @@
   ></script>
   <title>{site_title}</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.png" />
-  <!-- <link
-    rel="preload"
-    href="/fonts/americana.ttf"
-    as="font"
-    type="font/woff2"
-    crossOrigin="anonymous"
-  /> -->
 </svelte:head>
 
 <Header {menu} {menu_right} {config_theme} {site_title} {header_image} />
