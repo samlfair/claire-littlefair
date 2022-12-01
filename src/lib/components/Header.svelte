@@ -2,7 +2,7 @@
   import * as prismicH from '@prismicio/helpers'
   import { beforeNavigate } from '$app/navigation'
 
-  export let menu, header_image, site_title
+  export let menu, header_image, site_title, menu_right
 
   const {
     alt,
@@ -16,18 +16,19 @@
 <header>
   {#each menu as item}
     <li>
-      <a
-        prefetch
-        on:click={() => (hamburger = !hamburger)}
-        href={prismicH.asLink(item.link)}
-      >
+      <a prefetch href={prismicH.asLink(item.link)}>
         {item.label}
       </a>
     </li>
   {/each}
   <li class="title"><a href="/">{site_title}</a></li>
-  <li>Newsletter</li>
-  <li>Instagram</li>
+  {#each menu_right as item}
+    <li>
+      <a href={prismicH.asLink(item.link)}>
+        {item.label}
+      </a>
+    </li>
+  {/each}
 </header>
 
 <style>

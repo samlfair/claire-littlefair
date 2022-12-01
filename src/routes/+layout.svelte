@@ -12,6 +12,7 @@
     config_theme,
     header_image,
     menu,
+    menu_right,
     favicon = '𓍰',
   } = config.data
 </script>
@@ -33,7 +34,7 @@
   /> -->
 </svelte:head>
 
-<Header {menu} {config_theme} {site_title} {header_image} />
+<Header {menu} {menu_right} {config_theme} {site_title} {header_image} />
 
 <main>
   <slot />
