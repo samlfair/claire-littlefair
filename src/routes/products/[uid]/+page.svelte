@@ -1,5 +1,4 @@
 <script>
-  import * as prismic from '@prismicio/client'
   import * as prismicH from '@prismicio/helpers'
   import { SoldOut } from '$lib/components'
 
@@ -31,7 +30,11 @@
     <h2>{title}</h2>
     <p>{formattedPrice}<SoldOut /></p>
     <button disabled>Add to cart</button>
-    {@html prismicH.asHTML(description)}
+    <p>{square_item.description}</p>
+    {#if prismicH.isFilled.richText(description)}
+      <hr />
+      {@html prismicH.asHTML(description)}
+    {/if}
   </section>
 </main>
 
@@ -79,6 +82,10 @@
     height: auto;
     display: block;
     mix-blend-mode: darken;
+  }
+
+  hr {
+    max-width: 10px;
   }
 
   @media only screen and (max-width: 600px) {
