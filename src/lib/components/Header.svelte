@@ -79,6 +79,10 @@
       align-items: stretch;
     }
 
+    li:not(:last-child) {
+      border-right: none;
+    }
+
     li:not(.title) {
       display: none;
     }
@@ -106,7 +110,7 @@
     #burger:not(:checked) ~ li.title label.burger:after {
       content: '☰';
     }
-    
+
     #burger:checked ~ li.title label.burger:after {
       content: '×';
     }

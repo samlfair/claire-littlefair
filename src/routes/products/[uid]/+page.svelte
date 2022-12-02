@@ -1,4 +1,5 @@
 <script>
+  import * as prismic from '@prismicio/client'
   import * as prismicH from '@prismicio/helpers'
   import { SoldOut } from '$lib/components'
 
