@@ -8,7 +8,9 @@
   const { text, image } = slice.primary
   const { alt, dimensions } = image
   const { width, height } = dimensions
-  const { src, srcset } = prismicH.asImageWidthSrcSet(image)
+  const { src, srcset } = prismicH.asImageWidthSrcSet(image, {
+    widths: [640, 828, 1200]
+  })
 
   function getElementScrollCoefficient(scrollY, innerHeight, el) {
     if (el) {
