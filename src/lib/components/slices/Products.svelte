@@ -63,6 +63,7 @@
     mix-blend-mode: darken;
     margin-bottom: 1rem;
     display: block;
+    object-fit: cover;
   }
 
   h2 {
