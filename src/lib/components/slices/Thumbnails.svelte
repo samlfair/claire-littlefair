@@ -64,7 +64,6 @@
 
   .text {
     flex: 2;
-    min-width: 350px;
   }
   
   .image {
