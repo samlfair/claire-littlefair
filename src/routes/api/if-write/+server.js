@@ -12,6 +12,7 @@ const logoURL =
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ fetch }) {
+  console.log('Function running')
   const client = new Client({
     accessToken: env.SQUARE_ACCESS_TOKEN,
   })
@@ -85,6 +86,8 @@ export async function GET({ fetch }) {
     }
   })
 
+  console.log('Pre fetch')
+
   const prismicResponse = await fetch(prismicEndpoint, {
     method: 'POST',
     body: JSON.stringify(results),
@@ -93,12 +96,22 @@ export async function GET({ fetch }) {
     },
   })
 
+  console.log(prismicResponse)
+  console.log(prismicResponse.status)
+
   if (prismicResponse.status === 200) {
+    console.log('Prismic success')
     const vercelResponse = await fetch(env.VERCEL_WEBHOOK)
+
+    console.log(vercelResponse)
+    console.log(vercelResponse.status)
     if (vercelResponse.status === 201) {
+      console.log('Vercel success')
       return new Response('Success')
     }
   }
+
+  console.log('Failure')
 
   return new Response('Error')
 }
