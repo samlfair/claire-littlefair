@@ -34,6 +34,7 @@
     margin: -1rem;
     padding: 1rem;
     display: flex;
+    flex-wrap: wrap;
     transition: box-shadow 0.6s, transform 0.6s;
   }
 
@@ -51,10 +52,11 @@
     display: block;
     margin: 2rem 0 3rem;
   }
-
+  
   .image {
     /* aspect-ratio: 1.8; */
     flex: 1.2vw;
+    min-width: 200px;
     align-self: stretch;
   }
 
