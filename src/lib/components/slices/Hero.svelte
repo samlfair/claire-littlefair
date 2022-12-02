@@ -9,7 +9,7 @@
   const { alt, dimensions } = image
   const { width, height } = dimensions
   const { src, srcset } = prismicH.asImageWidthSrcSet(image, {
-    widths: [640, 828, 1200]
+    widths: [640, 828, 1200],
   })
 
   function getElementScrollCoefficient(scrollY, innerHeight, el) {
@@ -56,7 +56,7 @@
   />
 
   <div class="bound">
-      <p>{text}</p>
+    <p>{text}</p>
   </div>
 </section>
 
@@ -64,7 +64,7 @@
   section {
     /* position: relative; */
     display: grid;
-    grid-template: "container";
+    grid-template: 'container';
     place-items: center;
     place-content: center;
     overflow: hidden;
@@ -79,12 +79,12 @@
     height: auto;
     width: auto;
     object-fit: cover;
-    min-height: 100%;
+    height: 100%;
     display: block;
     filter: hue-rotate(calc(var(--scroll-coefficient) * 180deg));
     z-index: -1;
   }
-  
+
   p {
     z-index: 1;
     margin: 0;

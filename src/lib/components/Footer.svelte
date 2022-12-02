@@ -10,7 +10,7 @@
 </script>
 
 <footer style:background={config_theme.data.color}>
-      <img {src} {srcset} {alt} {width} {height} />
+  <img {src} {srcset} {alt} {width} {height} />
   <menu>
     {#each menu as item}
       <a href={prismicH.asLink(item.link)}>{item.label}</a>
@@ -33,7 +33,7 @@
 
   img {
     width: 40%;
-    object-fit: cover;
+    object-fit: contain;
     height: auto;
   }
 
