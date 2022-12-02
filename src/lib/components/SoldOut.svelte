@@ -4,10 +4,12 @@
   .sold-out {
     display: inline-block;
     transform: translateY(-1px);
-    color: rgb(187, 0, 0);
     text-transform: uppercase;
+    font-weight: bold;
+    color: #444;
     margin: 0 -8px 0 10px;
-    padding: 3px 8px 0px;
+    padding: 2px 6px 0px;
+    line-height: 2em;
     background: #eee;
     font-size: 0.6rem;
   }
