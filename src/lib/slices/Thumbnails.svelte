@@ -1,5 +1,5 @@
 <script>
-  import * as prismicH from "@prismicio/helpers"
+  import * as prismicH from '@prismicio/helpers'
 
   export let slice
 </script>
@@ -11,7 +11,7 @@
     <article>
       <a class="padding" href={prismicH.asLink(item.link)} class:reverse>
         <div class="image">
-          <img 
+          <img
             src={imageSrc.src}
             srcset={imageSrc.srcset}
             alt={item.image.alt}
@@ -38,22 +38,20 @@
     padding: 1.5rem;
     display: flex;
     flex-wrap: wrap;
-    transition: box-shadow 0.4s, transform 0.4s;
+    transition: box-shadow 0.1s, transform 0.1s;
     border-radius: 6px;
-    box-shadow: 
-      0px 2px 15px 4px rgba(0,0,0,0.08), 
-      0px 1px 2px 1px rgba(0,0,0,0.1);
-    
+    box-shadow: 0px 2px 15px 4px rgba(0, 0, 0, 0.08),
+      0px 1px 2px 1px rgba(0, 0, 0, 0.1);
   }
-  
+
   .padding.reverse {
     flex-direction: row-reverse;
   }
 
   .padding:hover {
     box-shadow: 
-      0px 4px 15px 6px rgba(0,0,0,0.08), 
-      0px 2px 5px 1px rgba(0,0,0,0.1);
+      0px 3px 20px 4px rgba(0, 0, 0, 0.08),
+      0px 2px 2px 1px rgba(0, 0, 0, 0.13);
     transform: translateY(-1px);
   }
 
@@ -65,7 +63,7 @@
   .text {
     flex: 2;
   }
-  
+
   .image {
     border-radius: 2px;
     overflow: hidden;
@@ -85,7 +83,7 @@
   }
 
   h2 {
-    margin-bottom:  0.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1.4rem;
   }
 </style>

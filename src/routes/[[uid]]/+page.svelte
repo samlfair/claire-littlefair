@@ -2,7 +2,7 @@
   import { SliceZone } from '@prismicio/svelte'
   import * as prismicH from '@prismicio/helpers'
   import { dev } from '$app/environment'
-  import components from '$lib/components/slices'
+  import components from '$lib/slices'
 
   export let data
 </script>
