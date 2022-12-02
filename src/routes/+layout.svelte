@@ -133,6 +133,16 @@
     text-indent: 0;
   }
 
+  :global(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :global(p a) {
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.2);
+  }
+
   :global(button) {
     font-family: 'Sweet Sans Pro';
   }
