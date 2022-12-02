@@ -1,4 +1,5 @@
 import { error } from '@sveltejs/kit'
+import fetch from 'node-fetch'
 import { Client, Environment } from 'square'
 import { env } from '$env/dynamic/private'
 import JSONbig from 'json-bigint'
@@ -23,12 +24,6 @@ export async function GET({ fetch }) {
 
   const objectIds = catalogObjects.map((object) => object.id)
 
-  // const {
-  //   result: { relatedObjects },
-  // } = await catalogApi.batchRetrieveCatalogObjects({
-  //   objectIds,
-  //   includeRelatedObjects: true,
-  // })
   const squareResponse = await catalogApi.batchRetrieveCatalogObjects({
     objectIds,
     includeRelatedObjects: true,
@@ -90,7 +85,7 @@ export async function GET({ fetch }) {
     }
   })
 
-  const response = await fetch(prismicEndpoint, {
+  const prismicResponse = await fetch(prismicEndpoint, {
     method: 'POST',
     body: JSON.stringify(results),
     headers: {
@@ -98,5 +93,12 @@ export async function GET({ fetch }) {
     },
   })
 
-  return new Response(JSONbig.stringify(response))
+  if (prismicResponse.status === 200) {
+    const vercelResponse = await fetch(env.VERCEL_WEBHOOK)
+    if (vercelResponse.status === 201) {
+      return new Response('Success')
+    }
+  }
+
+  return new Response('Error')
 }
