@@ -1,5 +1,4 @@
 import { error } from '@sveltejs/kit'
-import fetch from 'node-fetch'
 import { Client, Environment } from 'square'
 import { env } from '$env/dynamic/private'
 import JSONbig from 'json-bigint'
@@ -11,7 +10,8 @@ const logoURL =
   'https://images.prismic.io/clairelittlefair/37d63355-8d65-408e-b001-8824280ef046_02cfe0ec-0922-4c00-8887-a779e56d34ce_logo.png?auto=compress%2Cformat&width=2048'
 
 /** @type {import('./$types').RequestHandler} */
-export async function GET({ fetch }) {
+
+async function handler(fetch) {
   console.log('Function running')
   const client = new Client({
     accessToken: env.SQUARE_ACCESS_TOKEN,
@@ -107,11 +107,19 @@ export async function GET({ fetch }) {
     console.log(vercelResponse.status)
     if (vercelResponse.status === 201) {
       console.log('Vercel success')
-      return new Response('Success')
+      return new Response('Success', { status: 200 })
     }
   }
 
   console.log('Failure')
 
   return new Response('Error')
+}
+
+export async function GET({ fetch }) {
+  return await handler(fetch)
+}
+
+export async function POST({ fetch }) {
+  return await handler(fetch)
 }
