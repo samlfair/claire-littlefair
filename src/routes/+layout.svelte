@@ -5,16 +5,11 @@
 
   export let data
 
-  const { config } = data
+  const { config, menu } = data
 
-  const {
-    site_title,
-    config_theme,
-    header_image,
-    menu,
-    menu_right,
-    favicon = '𓍰',
-  } = config.data
+  const { menu_left, menu_right } = menu.data
+
+  const { site_title, config_theme, header_image, favicon = '𓍰' } = config.data
 </script>
 
 <svelte:head>
@@ -27,7 +22,7 @@
   <link rel="icon" type="image/svg+xml" href="./favicon.png" />
 </svelte:head>
 
-<Header {menu} {menu_right} {config_theme} {site_title} {header_image} />
+<Header {menu_left} {menu_right} {config_theme} {site_title} {header_image} />
 
 <main>
   <slot />
@@ -139,8 +134,8 @@
   }
 
   :global(p a) {
-    border-bottom: 2px solid rgba(0,0,0,0.2);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.2);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.2);
   }
 
   :global(button) {

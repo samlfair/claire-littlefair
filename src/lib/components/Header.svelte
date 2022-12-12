@@ -1,8 +1,8 @@
 <script>
   import * as prismicH from '@prismicio/helpers'
-  import { beforeNavigate } from '$app/navigation'
+  import HeaderMenu from '$lib/components/HeaderMenu.svelte'
 
-  export let menu, header_image, site_title, menu_right
+  export let header_image, site_title, menu_right, menu_left
 
   const {
     alt,
@@ -15,24 +15,12 @@
 
 <header>
   <input type="checkbox" id="burger" />
-  {#each menu as item}
-    <li>
-      <a prefetch href={prismicH.asLink(item.link)}>
-        {item.label}
-      </a>
-    </li>
-  {/each}
+  <HeaderMenu items={menu_left} />
   <li class="title">
     <a href="/">{site_title}</a>
     <label class="burger" for="burger" />
   </li>
-  {#each menu_right as item}
-    <li>
-      <a href={prismicH.asLink(item.link)}>
-        {item.label}
-      </a>
-    </li>
-  {/each}
+  <HeaderMenu items={menu_right} />
 </header>
 
 <style>
