@@ -7,14 +7,14 @@
 <input type="checkbox" id="checkbox" />
 
 <header class="checkbox-sibling">
-  <HeaderMenu items={menu_left} />
-  <a class="title" href="/">
-    <h1>
+  <HeaderMenu items={menu_left} alignment="left" />
+  <div class="menu-item title">
+    <a href="/">
       {site_title}
-    </h1>
+    </a>
     <label class="burger" for="checkbox" />
-  </a>
-  <HeaderMenu items={menu_right} />
+  </div>
+  <HeaderMenu items={menu_right} alignment="right" />
 </header>
 
 <style>
@@ -23,26 +23,34 @@
     background: var(--lightblue);
   }
 
-  header :global(a) {
+  header :global(.menu-item) {
     border-bottom: 1px solid black;
     flex-grow: 0;
-    text-align: center;
-    padding: 0.7rem 1.1rem;
     font-size: 0.9rem;
   }
 
-  header :global(a:not(:last-child)) {
+  header :global(.menu-item a) {
+    padding: 0.7rem 1.1rem;
+    display: block;
+  }
+
+  header :global(.menu-item:not(:last-child)) {
     border-right: 1px solid black;
   }
 
-  a.title {
+  .title {
     flex-grow: 1;
     position: relative;
+    text-align: center;
   }
 
-  h1 {
+  .title a {
+    padding: 0.5rem 1.1rem;
+    display: inline-block;
+    width: 100%;
     font-family: Americana;
-    font-size: 1.3em;
+    display: inline-block;
+    font-size: 1.4em;
     white-space: pre;
     color: black;
     text-decoration: none;
@@ -60,14 +68,15 @@
     header {
       flex-direction: column;
       align-items: stretch;
+      text-align: center;
     }
 
     /* Selectors necessary for specificity */
-    header :global(a:not(:last-child)) {
+    header :global(.menu-item:not(:last-child)) {
       border-right: none;
     }
 
-    a:not(.title) {
+    .menu-item:not(.title) {
       display: none;
     }
 
@@ -76,11 +85,7 @@
       display: flex;
     }
 
-    .title h1 {
-      flex-grow: 1;
-    }
-
-    :global(a:not(.title)) {
+    :global(.menu-item:not(.title)) {
       display: none;
     }
 
@@ -88,13 +93,14 @@
       display: initial;
       width: 0px;
       position: relative;
-      right: 0px;
+      right: 0.2em;
+      top: 0.2em;
     }
 
     label.burger:after {
       position: absolute;
       right: 0px;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
 
     #checkbox:not(:checked) ~ .checkbox-sibling label.burger:after {
@@ -105,7 +111,7 @@
       content: '×';
     }
 
-    #checkbox:checked ~ .checkbox-sibling :global(a:not(.title)) {
+    #checkbox:checked ~ .checkbox-sibling :global(.menu-item:not(.title)) {
       display: initial;
     }
   }
