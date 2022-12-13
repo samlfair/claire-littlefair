@@ -1,38 +1,29 @@
 <script>
-  import * as prismicH from '@prismicio/helpers'
   import HeaderMenu from '$lib/components/HeaderMenu.svelte'
 
-  export let header_image, site_title, menu_right, menu_left
-
-  const {
-    alt,
-    dimensions: { width, height },
-  } = header_image
-  const { srcset, src } = prismicH.asImageWidthSrcSet(header_image)
-
-  let hamburger = true
+  export let site_title, menu_right, menu_left
 </script>
 
-<header>
-  <input type="checkbox" id="burger" />
+<input type="checkbox" id="checkbox" />
+
+<header class="checkbox-sibling">
   <HeaderMenu items={menu_left} />
-  <li class="title">
-    <a href="/">{site_title}</a>
-    <label class="burger" for="burger" />
-  </li>
+  <a class="title" href="/">
+    <h1>
+      {site_title}
+    </h1>
+    <label class="burger" for="checkbox" />
+  </a>
   <HeaderMenu items={menu_right} />
 </header>
 
 <style>
   header {
-    border-right: none;
     display: flex;
     background: var(--lightblue);
   }
 
-  li {
-    list-style: none;
-    border-collapse: collapse;
+  header :global(a) {
     border-bottom: 1px solid black;
     flex-grow: 0;
     text-align: center;
@@ -40,23 +31,27 @@
     font-size: 0.9rem;
   }
 
-  li:not(:last-child) {
+  header :global(a:not(:last-child)) {
     border-right: 1px solid black;
   }
 
-  li.title {
+  a.title {
     flex-grow: 1;
+    position: relative;
+  }
+
+  h1 {
     font-family: Americana;
     font-size: 1.3em;
     white-space: pre;
-  }
-
-  a {
     color: black;
     text-decoration: none;
+    margin: 0;
+    margin-block-end: 0;
+    margin-block-start: 0;
   }
 
-  input#burger,
+  input#checkbox,
   label.burger {
     display: none;
   }
@@ -67,11 +62,12 @@
       align-items: stretch;
     }
 
-    li:not(:last-child) {
+    /* Selectors necessary for specificity */
+    header :global(a:not(:last-child)) {
       border-right: none;
     }
 
-    li:not(.title) {
+    a:not(.title) {
       display: none;
     }
 
@@ -80,30 +76,36 @@
       display: flex;
     }
 
-    .title a {
+    .title h1 {
       flex-grow: 1;
+    }
+
+    :global(a:not(.title)) {
+      display: none;
     }
 
     label.burger {
       display: initial;
       width: 0px;
       position: relative;
+      right: 0px;
     }
 
     label.burger:after {
       position: absolute;
       right: 0px;
+      font-size: 1.2rem;
     }
 
-    #burger:not(:checked) ~ li.title label.burger:after {
+    #checkbox:not(:checked) ~ .checkbox-sibling label.burger:after {
       content: '☰';
     }
 
-    #burger:checked ~ li.title label.burger:after {
+    #checkbox:checked ~ .checkbox-sibling label.burger:after {
       content: '×';
     }
 
-    #burger:checked ~ li:not(.title) {
+    #checkbox:checked ~ .checkbox-sibling :global(a:not(.title)) {
       display: initial;
     }
   }
