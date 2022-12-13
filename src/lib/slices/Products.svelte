@@ -21,7 +21,7 @@
 <style>
   section {
     margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
   }
 
   .grid {
@@ -33,6 +33,7 @@
   .see-all {
     display: flex;
     justify-content: flex-end;
+    margin-top: 1rem;
   }
 
   .see-all a {
