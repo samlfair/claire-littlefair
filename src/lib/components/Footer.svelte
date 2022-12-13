@@ -9,7 +9,7 @@
   const { srcset, src } = prismicH.asImageWidthSrcSet(header_image)
 </script>
 
-<footer style:background={config_theme.data.color}>
+<footer>
   <img {src} {srcset} {alt} {width} {height} />
   <menu>
     {#each menu as item}
@@ -29,6 +29,7 @@
     align-items: center;
     font-family: 'Sweet Sans Pro';
     padding: 4rem 15vw;
+    background: var(--lightblue);
   }
 
   img {
