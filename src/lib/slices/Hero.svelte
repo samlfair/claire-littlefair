@@ -77,7 +77,7 @@
 
   img {
     height: auto;
-    width: 100%;
+    width: auto;
     object-fit: cover;
     height: 100%;
     display: block;
