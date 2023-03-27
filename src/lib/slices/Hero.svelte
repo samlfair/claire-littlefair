@@ -77,7 +77,7 @@
   }
 
   img {
-    height: 100%;
+    min-height: 100%;
     width: auto;
     object-fit: cover;
     display: block;

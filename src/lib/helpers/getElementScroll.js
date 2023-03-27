@@ -1,5 +1,4 @@
 export default function getElementScrollCoefficient(scrollY, innerHeight, el) {
-  console.log('invoke')
   if (el) {
     const { top, bottom, height } = el.getBoundingClientRect()
     const elementScrollCoefficient =
