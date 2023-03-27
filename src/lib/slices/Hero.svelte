@@ -1,5 +1,6 @@
 <script>
   import * as prismicH from '@prismicio/helpers'
+  import { getElementScrollCoefficient } from '$lib/helpers'
 
   export let slice
 
@@ -8,39 +9,20 @@
   const { text, image } = slice.primary
   const { alt, dimensions } = image
   const { width, height } = dimensions
-  const { src, srcset } = prismicH.asImageWidthSrcSet(image, {
+  const gif = prismicH.asImageWidthSrcSet(image, {
     widths: [640, 828, 1200],
   })
 
-  function getElementScrollCoefficient(scrollY, innerHeight, el) {
-    if (el) {
-      const { top, bottom, height } = el.getBoundingClientRect()
-      const elementScrollCoefficient =
-        (innerHeight - top) / (innerHeight + height)
-
-      switch (true) {
-        case elementScrollCoefficient < 0:
-          // Element is above the screen
-          return 0
-        case elementScrollCoefficient > 1:
-          // Element is below the screen
-          return 1
-        case top + scrollY < innerHeight:
-          // Element starts above the fold
-          return scrollY / (bottom + innerHeight)
-        default:
-          // Element starts below the fold
-          return elementScrollCoefficient
-      }
-    }
-    // Element doesn't exist
-    return 0
-  }
+  const jpg = prismicH.asImageWidthSrcSet(image, {
+    widths: [640, 828, 1200],
+    fm: 'jpg',
+    auto: false,
+  })
 </script>
 
 <svelte:window bind:scrollY bind:innerHeight />
 
-<section class="hero">
+<section style:aspect-ratio={width / height} class="hero">
   <img
     style:--scroll-coefficient={getElementScrollCoefficient(
       scrollY,
@@ -48,11 +30,25 @@
       el,
     )}
     bind:this={el}
-    {src}
-    {srcset}
+    src={jpg.src}
+    srcset={jpg.srcset}
     {alt}
     {width}
     {height}
+  />
+  <img
+    style:--scroll-coefficient={getElementScrollCoefficient(
+      scrollY,
+      innerHeight,
+      el,
+    )}
+    bind:this={el}
+    src={gif.src}
+    srcset={gif.srcset}
+    {alt}
+    {width}
+    {height}
+    loading="lazy"
   />
 
   <div class="bound">
@@ -62,13 +58,17 @@
 
 <style>
   section {
-    /* position: relative; */
     display: grid;
     grid-template: 'container';
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     place-items: center;
     place-content: center;
     overflow: hidden;
     max-height: 100vh;
+    background: #ddd;
   }
 
   section > * {
@@ -77,12 +77,11 @@
 
   img {
     height: auto;
-    width: auto;
+    width: 100%;
     object-fit: cover;
     height: 100%;
     display: block;
     filter: hue-rotate(calc(var(--scroll-coefficient) * 180deg));
-    z-index: -1;
   }
 
   p {
