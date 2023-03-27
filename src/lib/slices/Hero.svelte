@@ -22,7 +22,8 @@
 
 <svelte:window bind:scrollY bind:innerHeight />
 
-<section style:aspect-ratio={width / height} class="hero">
+<!-- <section style:aspect-ratio={width / height} class="hero"> -->
+<section class="hero">
   <img
     style:--scroll-coefficient={getElementScrollCoefficient(
       scrollY,
@@ -76,10 +77,10 @@
   }
 
   img {
-    height: auto;
-    width: auto;
-    object-fit: cover;
     height: 100%;
+    max-height: 100vh;
+    /* width: auto; */
+    object-fit: cover;
     display: block;
     filter: hue-rotate(calc(var(--scroll-coefficient) * 180deg));
   }
