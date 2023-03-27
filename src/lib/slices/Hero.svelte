@@ -52,7 +52,7 @@
     loading="lazy"
   />
 
-  <div class="bound">
+  <div class="bound front">
     <p>{text}</p>
   </div>
 </section>
@@ -78,15 +78,14 @@
 
   img {
     height: 100%;
-    max-height: 100vh;
-    /* width: auto; */
+    width: auto;
     object-fit: cover;
     display: block;
     filter: hue-rotate(calc(var(--scroll-coefficient) * 180deg));
+    z-index: 1;
   }
 
   p {
-    z-index: 1;
     margin: 0;
     max-width: 520px;
     text-align: left;
@@ -99,5 +98,9 @@
     line-height: clamp(3.5rem, 8vw, 4rem);
     text-shadow: 1px 1px 10px rgba(130, 130, 130, 0.4);
     padding: 3.5rem 1rem 2.5rem;
+  }
+
+  .front {
+    z-index: 2;
   }
 </style>
