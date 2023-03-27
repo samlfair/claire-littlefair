@@ -23,7 +23,7 @@
 <svelte:window bind:scrollY bind:innerHeight />
 
 <!-- <section style:aspect-ratio={width / height} class="hero"> -->
-<section class="hero">
+<section style:min-height={height + 'px'} class="hero">
   <img
     style:--scroll-coefficient={getElementScrollCoefficient(
       scrollY,
@@ -77,7 +77,9 @@
   }
 
   img {
+    height: 100%;
     min-height: 100%;
+    min-width: 100%;
     width: auto;
     object-fit: cover;
     display: block;
